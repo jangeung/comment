@@ -1,0 +1,31 @@
+# view file
+
+<h1>post view page</h1>
+<div>
+    title : <%= @post.title %>
+</div>
+<div>
+    content : <%= @post.content %>
+</div>
+<div>
+    comments
+    <% @comments. each do |c| %>
+    <div>
+        <%= c.content %>
+        <a href="/comments/delete/<%= c.id %>">[댓글 삭제]</a>
+    </div>
+    <% end %>
+    <form action="/comments/create/<%= @post.id %>" method="post">
+        <div>
+            <input type="text" name="content" placeholder="add new comment">
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+<a href="/bulletin">
+    [뒤로가기]
+</a>
+<a href="/delete/<%= @post.id %>">
+    [삭제]
+</a>
